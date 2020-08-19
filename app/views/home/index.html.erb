@@ -2,7 +2,7 @@
 
 <div class="row">
     <% @tweets.each do |tweet| %>
-        <div class="col-12 border border-info p-3 mt-2">
+        <div class="col-12 border border-info p-3 mt-2 my-2">
             <%= image_tag (tweet.user.photo_url), :class => "avatar_in_tweet rounded" %>
             <%= tweet.content %>
             <br>
@@ -13,4 +13,7 @@
         </div >
 
     <% end %>
+
+    <%= paginate @tweets %>
+    <%#= link_to_next_page @tweets, "Mostrar más"%>
 </div >
