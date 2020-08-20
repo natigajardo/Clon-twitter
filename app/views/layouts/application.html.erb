@@ -7,7 +7,13 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+   <script src="https://kit.fontawesome.com/b8100589e8.js" crossorigin="anonymous"></script>
+
   </head>
 
   <body>
@@ -18,7 +24,7 @@
       </div>
 
       <div class="container">
-      
+
         <% if alert || notice %>
           <div class="alert alert_success mt-3" role="alert">
             <%= alert %>

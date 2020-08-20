@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :tweets
+  resources :tweets do 
+    post 'likes', to: 'tweets#likes'
+  end 
+
+
   devise_for :users
   get 'home/index'
 

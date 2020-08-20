@@ -11,15 +11,28 @@
         <div class="col-12 border border-info p-3 mt-2">
             <%= image_tag (tweet.user.photo_url), :class => "avatar-in-tweet rounded" %>
             <%= tweet.content %>
+            
             <hr/>
+            
             <div class="float-right">
-                <%= tweet.likes.count %> likes | 0 re-tweets
+                <span>
+                    <%= tweet.likes.count %> 
+                    <% if tweet.is_liked?(current_user) %>
+                         <%= link_to '<i class="fas fa-heart text-danger fa-sm"></i>'.html_safe, tweet_likes_path(tweet), method: :post %>
+                    <% else %>    
+                         <%= link_to '<i class="far fa-heart text-danger fa-sm"></i>'.html_safe, tweet_likes_path(tweet), method: :post %>
+                    <% end %>
+                </span>
+                <span>
+                    | 
+                </span>
+                <span>
+                    0 <i class="fas fa-retweet text-primary"></i><i class="fas fa-retweet text-muted"></i>
+                </span>    
             </div>
 
         </div >
-
     <% end %>
-   
 </div >
 
 <div class="row mt-2">
