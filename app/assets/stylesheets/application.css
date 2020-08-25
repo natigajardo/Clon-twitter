@@ -13,3 +13,111 @@
  *= require_tree .
  *= require_self
  */
+
+ .vertical-nav {
+    min-width: 10rem;
+    width: 10rem;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+  
+  .page-content {
+    width: calc(100% - 10rem);
+    margin-left: 10rem;
+    transition: all 0.4s;
+  }
+
+  .color-nav {
+    background-color: #d8d8d8 ;
+  }
+
+  /* icono twitter */
+  .index-icon-logo {
+    margin: 0;
+    padding-left: 2.5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    font-size: 50px;
+  }
+
+  .media-body-index {
+    align-items: center;
+    margin-bottom: -3rem;
+  }
+
+  /* foto perfil */  
+  .profile-image-nav {
+    width: 6rem;
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .text-user {
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .text-email-user {
+    font-weight: 400;
+    text-align: center;
+    margin-top: -0.5rem;
+  }
+
+  /* iconos-nav */
+  .index-icon {
+    margin: 0rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 3.5rem;
+    font-size: 40px;
+    font-weight: 600;
+  }
+
+  .index-icon-logo2 {
+    margin: 0;
+    margin-left: 3rem;
+    margin-top: 3rem;
+    font-size: 50px;
+    font-weight: 400;
+  }
+
+  .nav-link {
+    text-align: center;
+    padding-top: 2rem;
+    font-size: 15px;
+    font-weight: 400;
+  }
+  /* for toggle behavior */
+  
+  #sidebar.active {
+    margin-left: -10rem;
+  }
+  
+  #content.active {
+    width: 100%;
+    margin: 0;
+  }
+  
+  @media (max-width: 768px) {
+    #sidebar {
+      margin-left: -10rem;
+    }
+    #sidebar.active {
+      margin-left: 0;
+    }
+    #content {
+      width: 100%;
+      margin: 0;
+    }
+    #content.active {
+      margin-left: 10rem;
+      width: calc(100% - 10rem);
+    }
+  }
+
+  

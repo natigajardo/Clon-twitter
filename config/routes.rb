@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :tweets do 
     post 'likes', to: 'tweets#likes'
+    post 'retweet', to: 'tweets#retweet'
   end 
 
 

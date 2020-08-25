@@ -1,5 +1,6 @@
 
-<div class="row">
+<!-- Page content holder -->
+<div class="page-content p-5" id="content">
 
     <% if user_signed_in?%>
         <div class="col-12">
@@ -9,28 +10,47 @@
 
     <% @tweets.each do |tweet| %>
         <div class="col-12 border border-info p-3 mt-2">
-            <%= image_tag (tweet.user.photo_url), :class => "avatar-in-tweet rounded" %>
-            <%= tweet.content %>
+
+            <div class="row">   
+                <div class="container">
+                    <div class="photo-profile">
+                        <%= image_tag (tweet.user.photo_url), :class => "avatar-in-tweet rounded" %>
+                    </div >
+
+                    <div class="index-rt-icontext">
+                        <% if tweet.is_retweet? %>
+                            <%= link_to '<i class="fas fa-retweet text-muted"></i>'.html_safe %>
+                            <%= link_to "Has retwitteado..", tweet.tweet_ref %>   
+                        <% end %>
+                    </div>
+
+                    <div class="index-username">
+                        <%= tweet.user.username %>
+                    </div>
+
+                    <span>
+                        <%= link_to '<i class="far fa-calendar-alt fa-sm"></i> '.html_safe+distance_of_time_in_words(Time.now, tweet.created_at), tweet %>
+                    </span>
+
+                    <div class="index-content">
+                        <%= tweet.content %>
+                    </div>
+                </div>
+            </div>    
             
             <hr/>
             
             <div class="float-right">
                 <span>
-                    <%= tweet.likes.count %> 
-                    <% if tweet.is_liked?(current_user) %>
-                         <%= link_to '<i class="fas fa-heart text-danger fa-sm"></i>'.html_safe, tweet_likes_path(tweet), method: :post %>
-                    <% else %>    
-                         <%= link_to '<i class="far fa-heart text-danger fa-sm"></i>'.html_safe, tweet_likes_path(tweet), method: :post %>
-                    <% end %>
-                </span>
+                    <%= tweet.likes.count %>       
+                         <%= link_to ('<i class="'+tweet.like_icon(current_user)+' text-danger fa-sm"></i>').html_safe, tweet_likes_path(tweet), method: :post %>              
+                </span>   
+                    |         
                 <span>
-                    | 
-                </span>
-                <span>
-                    0 <i class="fas fa-retweet text-primary"></i><i class="fas fa-retweet text-muted"></i>
+                    <%= tweet.count_rt %>  
+                        <%= link_to ('<i class="fas fa-retweet '+tweet.retweet_icon+'"></i>').html_safe, tweet_retweet_path(tweet), method: :post %>                                             
                 </span>    
             </div>
-
         </div >
     <% end %>
 </div >

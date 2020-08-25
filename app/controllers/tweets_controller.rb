@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
-  before_action :set_current_tweet, only: [:likes]
+  before_action :set_current_tweet, only: [:likes, :retweet]
 
   # GET /tweets
   # GET /tweets.json
@@ -72,6 +72,12 @@ class TweetsController < ApplicationController
     end 
     redirect_to root_path
   end
+
+  def retweet
+    new_tweet = Tweet.create(content: @tweet.content, user: current_user, rt_ref: @tweet.id)
+    
+    redirect_to root_path 
+  end 
 
   private
     # Use callbacks to share common setup or constraints between actions.
