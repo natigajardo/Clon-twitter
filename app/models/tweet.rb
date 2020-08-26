@@ -5,7 +5,13 @@ class Tweet < ApplicationRecord
   has_many :likes
   has_many :liking_users, :through => :likes, :source => :user
 
-  paginates_per 3
+  paginates_per 10
+
+  scope :tweets_for_me, -> (user) { where(user_id: user.friends.pluck(:friend_id))}
+  
+  #def arr_friends_id
+  #  self.friends.pluck(:friend_id)
+  #end 
 
   def is_liked?(user)
     if self.liking_users.include?(user)

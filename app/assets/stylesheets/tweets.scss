@@ -2,6 +2,33 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* Avatar del tweet en el index de home */ 
+
 .avatar-in-tweet {
-    width: 6%;
+    width: 80px;
+    margin-left: -2rem;
+    margin-top: -1rem;
+}
+
+.card-style-index {
+    width: 45rem; 
+    height: 10rem;
+   text-align: left;
+}
+
+.index-rt-icontext {
+    margin-top: -1rem;
+}
+
+.btn-follow {
+    
+}
+
+/* Formulario de tweet*/
+
+/* Estilo de la card de nuevo tweet */
+.card-style {
+   width: 45rem; 
+   text-align: left;
+   margin-left: -11rem;
 }

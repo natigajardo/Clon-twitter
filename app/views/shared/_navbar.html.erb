@@ -6,11 +6,14 @@
           
       <div class="media-body-index">
         <% if user_signed_in?%>
-          <%= image_tag (current_user.photo_url), :class =>"rounded-circle img-thumbnail shadow-sm profile-image-nav mr-3" %>      
+
+        <%= link_to image_tag(current_user.photo_url, class: 'rounded-circle img-thumbnail shadow-sm profile-image-nav mr-3'), tweets_path %>
+
+             
           <h4 class="text-user"><%= current_user.username %></h4>
           <p class="font-weight-light text-muted text-email-user"><%= current_user.email %></p>
          <%else%>
-           <%= link_to '<i class="fab fa-twitter text-primary index-icon-logo"></i> '.html_safe,root_path %>
+           <%= link_to '<i class="fab fa-twitter index-icon-logo"></i> '.html_safe,root_path %>
         <% end %>
       </div>
 
@@ -19,36 +22,38 @@
 
   
     <ul class="nav flex-column color-nav mb-0">
-      <li class="nav-item">
-        <%= link_to '<i class="fas fa-home text-dark index-icon"></i> '.html_safe, root_path%>
-      </li>
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to '<i class="fas fa-home index-icon"></i> '.html_safe, root_path%>
+        </li>
 
-      <li class="nav-item">
-        <%= link_to '<i class="fas fa-hashtag text-dark index-icon"></i> '.html_safe, root_path%>
-      </li>
+        <li class="nav-item">
+          <%= link_to '<i class="fas fa-hashtag index-icon"></i> '.html_safe, root_path%>
+        </li>
 
-      <li class="nav-item">
-        <%= link_to '<i class="fas fa-pen text-dark index-icon"></i> '.html_safe, new_tweet_path %>
-      </li>
+        <li class="nav-item">
+          <%= link_to '<i class="fas fa-pen index-icon"></i> '.html_safe, new_tweet_path %>
+        </li>
+      <% end %>
 
-      <li>
+
         <% if user_signed_in? %>
             <li class="nav-item">
-            <%= link_to 'Cerrar sesión', destroy_user_session_path, method:  :delete, class: 'nav-link'%>
+            <%= link_to '<i class="fas fa-sign-out-alt session-icon"></i>'.html_safe, destroy_user_session_path, method:  :delete, class: 'nav-link'%>
             </li>
         <% else %>
             <li class="nav-item">
-                <%= link_to 'Registro', new_user_registration_path, class:  'nav-link'%>
+                <%= link_to '<i class="fas fa-plus session-icon pr-2"></i>'.html_safe + " Registro", new_user_registration_path, class:  'nav-link'%>
             </li>
             <li class="nav-item">
-                <%= link_to 'Login', new_user_session_path, class: 'nav-link'%>
+                <%= link_to '<i class="fas fa-sign-in-alt session-icon pr-3 d-inline-flex"></i> '.html_safe + "Log In", new_user_session_path, class: 'nav-link'%>
             </li>
         <% end %>
-        </li>
+
 
         <li>
         <% if user_signed_in?%>
-          <%= link_to '<i class="fab fa-twitter text-primary index-icon-logo2"></i> '.html_safe, root_path %>
+          <%= link_to '<i class="fab fa-twitter index-icon-logo2 border-top1"></i> '.html_safe, root_path %>
         <% end %>
         </li>
 

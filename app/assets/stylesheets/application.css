@@ -33,7 +33,7 @@
   }
 
   .color-nav {
-    background-color: #d8d8d8 ;
+    background-color: #FFC0BE ;
   }
 
   /* icono twitter */
@@ -43,6 +43,7 @@
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     font-size: 50px;
+    color: #6DC0D5;
   }
 
   .media-body-index {
@@ -75,23 +76,45 @@
     margin-bottom: 1rem;
     margin-left: 3.5rem;
     font-size: 40px;
-    font-weight: 600;
+    color: #666A86;
   }
 
-  .index-icon-logo2 {
-    margin: 0;
-    margin-left: 3rem;
-    margin-top: 3rem;
-    font-size: 50px;
-    font-weight: 400;
-  }
-
+  /* links nav */
   .nav-link {
     text-align: center;
-    padding-top: 2rem;
-    font-size: 15px;
+    
+    font-size: 18px;
     font-weight: 400;
+    color: #666A86;
   }
+
+  .session-icon {
+    text-align: center;
+    margin: 0rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 40px;
+    color: #666A86;
+  }
+
+  /* logo twitter inferior */
+  .index-icon-logo2 {
+    margin: 0;
+    text-align: center;
+    margin-left: 2.5rem;
+    margin-top: 1.5rem;
+    padding-top: 0.5rem;
+    font-size: 50px;
+    color: #6DC0D5;
+    
+  }
+
+  .border-top1{
+    text-align: center;
+    border-top: 1px solid #000000;
+    width: 5rem;
+  }
+
   /* for toggle behavior */
   
   #sidebar.active {
