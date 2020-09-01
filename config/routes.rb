@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  ActiveAdmin.routes(self)
   resources :tweets do 
     post 'likes', to: 'tweets#likes'
     post 'retweet', to: 'tweets#retweet'

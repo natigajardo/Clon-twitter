@@ -28,7 +28,7 @@
         </li>
 
         <li class="nav-item">
-          <%= link_to '<i class="fas fa-hashtag index-icon"></i> '.html_safe, root_path%>
+          <%= link_to '<i class="fas fa-globe-americas index-icon"></i> '.html_safe, all_tweets_path %>
         </li>
 
         <li class="nav-item">
@@ -39,7 +39,7 @@
 
         <% if user_signed_in? %>
             <li class="nav-item">
-            <%= link_to '<i class="fas fa-sign-out-alt session-icon"></i>'.html_safe, destroy_user_session_path, method:  :delete, class: 'nav-link'%>
+            <%= link_to '<i class="fas fa-sign-out-alt session-icon"></i>'.html_safe, destroy_user_session_path, method:  :get, class: 'nav-link'%>
             </li>
         <% else %>
             <li class="nav-item">

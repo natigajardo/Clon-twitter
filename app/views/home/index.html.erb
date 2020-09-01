@@ -1,72 +1,72 @@
 
 <!-- Page content holder -->
 <div class="page-content p-4" id="content">
-  
-    <% if user_signed_in?%>
-        <div class="col-12">
+
+    <% if user_signed_in? %>
+        <div class="col-12 new-tweet text-dark pt-4 pb-2">
             <%= render 'tweets/form', tweet: @tweet %>
         </div>
-    <% end %>
 
-
-    <% @tweets.each do |tweet| %>
-        <div class="col-12 p-3 mt-2 card card-style-index">
-
+        <div class="w-100 mt-2 mb-2">
+            <%= form_tag(root_path, method: :get) do %>
+                <div class="form-group">
+                    <%= link_to "Limpiar", root_path, :class => "btn btn-info float-right ml-2" %>
+                    <%= submit_tag("Buscar", :class => "btn btn-primary text-white float-right ml-2") %>
+                    <%= text_field_tag(:search, params[:search], :class => "form-control d-inline float-right w-50") %>
+                </div>
+            <% end %>
+        </div>
+    <% end %> 
+  
+    <div class="mt-2">
+        <% @tweets.each do |tweet| %>
+         <div class="col-12 p-3 mt-2 card card-style-index">
             <div class="row card-body">   
-                <div class="container">
-                
-                    <div class="card-title">
-                        <div class="photo-profile col-3 d-inline">
-                            <%= image_tag (tweet.user.photo_url), :class => "avatar-in-tweet rounded" %>
-                            <% if user_signed_in? && current_user != tweet.user %>
+        
+                <div class="col-2 card-title pt-2">
+                    <div class="photo-profile col-3 d-inline">
+                        <%= image_tag (tweet.user.photo_url), :class => "avatar-in-tweet rounded-circle img-thumbnail" %>
+                        <% if user_signed_in? && current_user != tweet.user %>
                             <%= link_to current_user.is_following?(tweet.user) ? 
                             "Dejar de seguir" : "Seguir", 
                             users_follow_path(tweet.user.id), 
                             class: "btn-follow",
                             method: :post %>
-                            <% end %>
-                        </div>
-
-                        <div class="index-username col-2 d-inline">
-                            <%= tweet.user.username %>
-                        </div>
-
-                        <div class="index-rt-icontext col-2 d-inline">
-                            <% if tweet.is_retweet? %>
-                                <%= link_to '<i class="fas fa-retweet text-muted"></i>'.html_safe %>
-                                <%= link_to "Has retwitteado..", tweet.tweet_ref %>   
                         <% end %>
-                        </div>
+                    </div>
+                </div>    
 
-                        <span class="d-inline col-2">
-                            <%= link_to '<i class="far fa-calendar-alt fa-sm"></i> '.html_safe+distance_of_time_in_words(Time.now, tweet.created_at), tweet %>
-                        </span>
-                    </div>   
-
-                </div>
-
-                 <div class="index-content card-text">
-                     <%= tweet.content %>
-                 </div>
-             </div>
-                    
-              <div class="float-right text-right">
-                  <span>
-                     <%= tweet.likes.count %>       
-                          <%= link_to ('<i class="'+tweet.like_icon(current_user) +' text-danger fa-sm"></i>').html_safe, tweet_likes_path(tweet), method: :post %>              
-                   </span>   
-                    |         
-                   <span>
-                      <%= tweet.count_rt %>  
-                      <%= link_to ('<i class="fas fa-retweet '+tweet.retweet_icon+'"></i>').html_safe, tweet_retweet_path(tweet), method: :post %>                                             
-                    </span>    
-             </div>   
-        </div>    
+                <div class="col-10">
+                    <div class="index-rt-icontext col-2 d-inline">
+                        <% if tweet.is_retweet? %>
+                            <%= link_to '<i class="fas fa-retweet text-muted"></i>'.html_safe %>
+                            <%= link_to "Has retwitteado..", tweet.tweet_ref %>   
+                    <% end %>
+                    </div> 
+                    <span class="index-username"><%= tweet.user.username %> </span><br>
+                    <span class=""><%= link_to '<i class="far fa-calendar-alt fa-sm"></i> '.html_safe+distance_of_time_in_words(Time.now, tweet.created_at), tweet %> </span><br>
+                    <span class="index-content card-text"><%= tweet.content.html_safe %></span>     
+                </div>   
+            </div>
             
-    <% end %>
-</div >
+            <div class="float-right text-right">
+                <span>
+                    <%= tweet.likes.count %>       
+                        <%= link_to ('<i class="'+tweet.like_icon(current_user) +' text-danger fa-sm"></i>').html_safe, tweet_likes_path(tweet), method: :post %>              
+                </span>   
+                    |         
+                <span>
+                    <%= tweet.count_rt %>  
+                    <%= link_to ('<i class="fas fa-retweet '+tweet.retweet_icon+'"></i>').html_safe, tweet_retweet_path(tweet), method: :post %>                                             
+                </span>    
+            </div>   
+        </div> 
+        <% end %>
+    </div>
+        
+    <div class="row mt-2">
+        <%= paginate @tweets %>
+        <%#= link_to_next_page @tweets, "Mostrar más"%>
+    </div >
 
-<div class="row mt-2">
-    <%= paginate @tweets %>
-     <%#= link_to_next_page @tweets, "Mostrar más"%>
 </div >
