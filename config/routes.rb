@@ -14,5 +14,12 @@ Rails.application.routes.draw do
   post 'follow/:user_id', to: 'users#follow', as: 'users_follow'
 
   root to: 'home#index'
+
+  scope '/api' do 
+    get '/news', to: 'api#news', as: 'api_news'
+    get '/tweets_between_dates/:date1/:date2', to: 'api#tweets_between_dates', as: 'tweets_between_dates'
+    post '/tweets', to: 'api#create_tweet', as: 'api_tweets'
+  end 
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
