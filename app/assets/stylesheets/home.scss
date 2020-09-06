@@ -1,3 +1,217 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* Proporciones pagina nav-body-espacio */
+
+.vertical-nav {
+  min-width: 14rem;
+  width: 14rem;
+  height: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.page-content {
+  width: calc(100% - 14rem);
+  margin-left: 14rem;
+  transition: all 0.4s;
+}
+
+/* propiedades nav */
+
+.color-nav {
+    background-color: #F1DAC4;
+}
+
+.medidas-img-profile{
+    width: 150px;
+}
+
+.ubicacion-foto {
+    text-align: center;
+    padding-left: 1.5rem;
+}
+
+.ubicacion-name {
+    text-align: center;
+}
+
+.font-name {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.font-email {
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+.secciones-nav {
+    padding-left: 1rem;
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+
+.index-icon {
+  font-size: 2.5rem;
+  padding-bottom: 1rem;
+  color: black;
+}
+
+.index-icon2 {
+  font-size: 2.5rem;
+  color: black;
+}
+
+.index-icon-logo {
+  font-size: 4rem;
+  text-align: center;
+  padding-top: 2rem;
+  padding-left: 4rem;
+  color: black;
+}
+
+.border-top1 {
+  border-top: 0.5px solid black;
+  width: 100px;
+  margin-left: 2rem;
+}
+
+.index-logo2 {
+  font-size: 3rem;
+  padding-top: 1rem;
+  color: black;
+  padding-bottom: 1rem;
+}
+
+/* for toggle behavior */
+
+#sidebar.active {
+  margin-left: -17rem;
+}
+
+#content.active {
+  width: 100%;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  #sidebar {
+    margin-left: -17rem;
+  }
+  #sidebar.active {
+    margin-left: 0;
+  }
+  #content {
+    width: 100%;
+    margin: 0;
+  }
+  #content.active {
+    margin-left: 17rem;
+    width: calc(100% - 17rem);
+  }
+}
+
+/* Body */
+
+body {
+  background: #6DC0D5;
+  background: -webkit-linear-gradient(to right, #176087, #6DC0D5);
+  background: linear-gradient(to right, #176087, #6DC0D5);
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.separator {
+  margin: 1rem 0;
+  border-bottom: 1px dashed #fff;
+}
+
+.text-uppercase {
+  letter-spacing: 0.1em;
+}
+
+.text-gray {
+  color: #aaa;
+}
+
+/* Formulario nuevo tweet index */
+.new-tweet {
+  width: 63vw;
+  padding: 0rem 3rem;
+}
+
+.buscador {
+  padding-right: 1rem;
+}
+
+/* Formato tweets */
+
+.card-margenes {
+  width: 80vw;
+}
+
+.photo-tweet {
+  font-size: 90px;
+}
+
+.content-text-card {
+  padding: 0rem;
+  padding-top: 2rem;
+}
+
+.rt-text {
+  margin-top: -2rem;
+}
+
+.index-username {
+  margin-top: 1rem;
+}
+
+.separator2 {
+  margin: 1rem 0;
+  border-bottom: 1px dashed #F1DAC4;
+}
+
+.separator3 {
+  margin: 1rem 0;
+  border-bottom: 1px dashed #F1DAC4;
+}
+
+.btn-follow {
+  color: #FAC748;
+}
+
+/* index */
+
+.paginate-tweets {
+  padding-left: 2rem;
+}
+
+/* application view */
+
+.alert-margen {
+  margin-left: 20rem;
+}
+
+/* show de tweet */
+
+.photo-tweet2 {
+  width: 90px;
+  margin-left: 3rem;
+}
+
+.username-text-like {
+  margin-left: 4rem;
+}
+
+
+
+
+

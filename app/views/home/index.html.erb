@@ -1,32 +1,41 @@
 
 <!-- Page content holder -->
-<div class="page-content p-4" id="content">
+<div class="page-content p-5" id="content">
+  <!-- Toggle button -->
+  <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">Menú</small></button>
 
-    <% if user_signed_in? %>
-        <div class="col-12 new-tweet text-dark pt-4 pb-2">
-            <%= render 'tweets/form', tweet: @tweet %>
-        </div>
-
-        <div class="w-100 mt-2 mb-2">
-            <%= form_tag(root_path, method: :get) do %>
-                <div class="form-group">
-                    <%= link_to "Limpiar", root_path, :class => "btn btn-info float-right ml-2" %>
-                    <%= submit_tag("Buscar", :class => "btn btn-primary text-white float-right ml-2") %>
-                    <%= text_field_tag(:search, params[:search], :class => "form-control d-inline float-right w-50") %>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Render formulario para nuevo tweet  -->
+            <% if user_signed_in? %>
+                <div class="col-12 new-tweet align-items-center text-dark">
+                    <%= render 'tweets/form', tweet: @tweet %>
                 </div>
-            <% end %>
-        </div>
-    <% end %> 
-  
-    <div class="mt-2">
-        <% @tweets.each do |tweet| %>
-             <%= render 'shared/tweet', tweet: tweet %>   
-        <% end %>
-    </div>
-        
-    <div class="row mt-2">
-        <%= paginate @tweets %>
-        <%#= link_to_next_page @tweets, "Mostrar más"%>
-    </div >
 
+                <!-- Buscador -->
+                <div class="col-12 buscador mt-2 mb-2">
+                    <%= form_tag(root_path, method: :get) do %>
+                        <div class="form-group">
+                            <%= link_to "Limpiar", root_path, :class => "btn btn-info float-right ml-2" %>
+                            <%= submit_tag("Buscar", :class => "btn btn-warning text-black float-right ml-2") %>
+                            <%= text_field_tag(:search, params[:search], :class => "form-control d-inline float-right w-50") %>
+                        </div>
+                    <% end %>
+                </div>
+            <% end %> 
+
+            <div class=" col-12 separator"></div>
+
+            <div class="card-margenes mt-2">
+                <% @tweets.each do |tweet| %>
+                    <%= render 'shared/tweet', tweet: tweet %>   
+                <% end %>
+            </div>
+        
+            <div class="row mt-2 paginate-tweets">
+                <%= paginate @tweets %>
+            </div>
+
+        </div>
+    </div>
 </div >

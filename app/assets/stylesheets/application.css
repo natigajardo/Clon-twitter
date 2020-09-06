@@ -10,141 +10,17 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= stub "active_admin"
  *= require_tree .
  *= require_self
+ *= stub "active_admin"
  */
 
- .vertical-nav {
-    min-width: 10rem;
-    width: 10rem;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.4s;
-    font-family: 'Source Sans Pro', sans-serif;
-  }
+ 
+
+ 
   
-  .page-content {
-    width: calc(100% - 10rem);
-    margin-left: 10rem;
-    transition: all 0.4s;
-  }
-
-  .color-nav {
-    background-color: #FFC0BE ;
-  }
-
-  /* icono twitter */
-  .index-icon-logo {
-    margin: 0;
-    padding-left: 2.5rem;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    font-size: 50px;
-    color: #6DC0D5;
-  }
-
-  .media-body-index {
-    align-items: center;
-    margin-bottom: -3rem;
-  }
-
-  /* foto perfil */  
-  .profile-image-nav {
-    width: 6rem;
-    margin-left: 1rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .text-user {
-    font-weight: 600;
-    text-align: center;
-  }
-
-  .text-email-user {
-    font-weight: 400;
-    text-align: center;
-    margin-top: -0.5rem;
-  }
-
-  /* iconos-nav */
-  .index-icon {
-    margin: 0rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    margin-left: 3.5rem;
-    font-size: 40px;
-    color: #666A86;
-  }
-
-  /* links nav */
-  .nav-link {
-    text-align: center;
-    
-    font-size: 18px;
-    font-weight: 400;
-    color: #666A86;
-  }
-
-  .session-icon {
-    text-align: center;
-    margin: 0rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    font-size: 40px;
-    color: #666A86;
-  }
-
-  /* logo twitter inferior */
-  .index-icon-logo2 {
-    margin: 0;
-    text-align: center;
-    margin-left: 2.5rem;
-    margin-top: 1.5rem;
-    padding-top: 0.5rem;
-    font-size: 50px;
-    color: #6DC0D5;
-    
-  }
-
-  .border-top1{
-    text-align: center;
-    border-top: 1px solid #000000;
-    width: 5rem;
-  }
-
-  /* for toggle behavior */
   
-  #sidebar.active {
-    margin-left: -10rem;
-  }
   
-  #content.active {
-    width: 100%;
-    margin: 0;
-  }
-  
-  @media (max-width: 768px) {
-    #sidebar {
-      margin-left: -10rem;
-    }
-    #sidebar.active {
-      margin-left: 0;
-    }
-    #content {
-      width: 100%;
-      margin: 0;
-    }
-    #content.active {
-      margin-left: 10rem;
-      width: calc(100% - 10rem);
-    }
-  }
-
-  /* Body */
 
   
 

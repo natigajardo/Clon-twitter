@@ -1,61 +1,78 @@
 
 <!-- Vertical navbar -->
+
 <div class="vertical-nav color-nav" id="sidebar">
-  <div class="py-4 px-3 mb-4">
-    <div class="media d-flex align-items-center">
-          
-      <div class="media-body-index">
-        <% if user_signed_in?%>
-
-        <%= link_to image_tag(current_user.photo_url, class: 'rounded-circle img-thumbnail shadow-sm profile-image-nav mr-3'), tweets_path %>
-
-             
-          <h4 class="text-user"><%= current_user.username %></h4>
-          <p class="font-weight-light text-muted text-email-user"><%= current_user.email %></p>
-         <%else%>
-           <%= link_to '<i class="fab fa-twitter index-icon-logo"></i> '.html_safe,root_path %>
-        <% end %>
+  <div class="py-4 px-3 mb-2 color-nav">
+    <% if user_signed_in?%>
+      <span class="media d-flex align-items-center ubicacion-foto" alt="..." width="65">
+      <%=link_to image_tag(current_user.photo_url, class: 'mr-3 rounded-circle img-thumbnailshadow-sm medidas-img-profile'), tweets_path %>
+      </span>  
+      <div class="media-body ubicacion-name">
+         <h4 class="m-0 font-name"><%= current_user.username %></h4>
+         <p class="font-weight-light text-muted mb-0 font-email"><%= current_user.email %></p>
       </div>
-
-    </div>
-  </div>
-
+    <%else%>
+      <%= link_to '<i class="fab fa-twitter index-icon-logo"></i> '.html_safe, root_path %>    
+    <%end%>
+  </div>  
   
-    <ul class="nav flex-column color-nav mb-0">
-      <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to '<i class="fas fa-home index-icon"></i> '.html_safe, root_path%>
-        </li>
-
-        <li class="nav-item">
-          <%= link_to '<i class="fas fa-globe-americas index-icon"></i> '.html_safe, all_tweets_path %>
-        </li>
-
-        <li class="nav-item">
-          <%= link_to '<i class="fas fa-pen index-icon"></i> '.html_safe, new_tweet_path %>
-        </li>
+      <div class="secciones-nav">
+      <% if user_signed_in?%>
+        <ul class="nav flex-column color-nav mb-1">
+          <li class="nav-item">
+            <span class="nav-link text-black color-nav">
+              <%= link_to '<i class="fas fa-home index-icon"></i> '.html_safe, root_path%>
+              Home
+            </span>
+          </li>
+    
+          <li class="nav-item">
+            <span class="nav-link text-black color-nav">
+              <%= link_to '<i class="fas fa-globe-americas index-icon"></i> '.html_safe, all_tweets_path %>
+                All Tweets
+              </span>
+          </li>
+    
+          <li class="nav-item">
+            <span class="nav-link text-black color-nav">
+              <%= link_to '<i class="fas fa-pen index-icon"></i> '.html_safe, new_tweet_path %>
+              New Tweets
+            </span>
+          </li>
       <% end %>
 
+      <!--Log out, registro y log in -->
+      <% if user_signed_in? %>
+          <div class="nav-item">
+            <span class="nav-link text-black color-nav">
+              <%= link_to '<i class="fas fa-sign-out-alt index-icon d-inline"></i>'.html_safe, destroy_user_session_path, method:  :get%> 
+              Log Out
+            </span>  
+          </div>
+      <% else %>
+          <div class="nav-item pb-3">
+            <span class="nav-link text-black color-nav">
+              <%= link_to '<i class="fas fa-plus index-icon2 d-inline"></i>'.html_safe, new_user_registration_path %>
+              Registro
+            </span>  
+          </div>
+          <div class="nav-item">
+            <span class="nav-link text-black color-nav">
+              <%= link_to '<i class="fas fa-sign-in-alt index-icon2 d-inline"></i> '.html_safe, new_user_session_path%>
+              Log In
+            </span>  
+          </div>
+      <% end %>
 
-        <% if user_signed_in? %>
-            <li class="nav-item">
-            <%= link_to '<i class="fas fa-sign-out-alt session-icon"></i>'.html_safe, destroy_user_session_path, method:  :get, class: 'nav-link'%>
-            </li>
-        <% else %>
-            <li class="nav-item">
-                <%= link_to '<i class="fas fa-plus session-icon pr-2"></i>'.html_safe + " Registro", new_user_registration_path, class:  'nav-link'%>
-            </li>
-            <li class="nav-item">
-                <%= link_to '<i class="fas fa-sign-in-alt session-icon pr-3 d-inline-flex"></i> '.html_safe + "Log In", new_user_session_path, class: 'nav-link'%>
-            </li>
-        <% end %>
+          <div class="nav-item">
+            <span class="nav-link text-black color-nav">
+              <% if user_signed_in?%>
+                <%= link_to '<i class="fab fa-twitter index-logo2 border-top1 text-center"></i> '.html_safe, root_path %>
+              <% end %>
+            </span>
+          </div>
 
+      </ul>
+  </div>  
 
-        <li>
-        <% if user_signed_in?%>
-          <%= link_to '<i class="fab fa-twitter index-icon-logo2 border-top1"></i> '.html_safe, root_path %>
-        <% end %>
-        </li>
-
-    </ul>
 </div>

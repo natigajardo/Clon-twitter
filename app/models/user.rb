@@ -4,9 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :friends        
-  has_many :tweets    
-  has_many :likes
+  has_many :friends, dependent: :delete_all        
+  has_many :tweets, dependent: :delete_all 
+  has_many :likes, dependent: :delete_all 
   has_many :liked_tweets, :through => :likes, :source => :tweet 
 
   #def admin

@@ -1,53 +1,90 @@
-<!-- Page content holder -->
-<div class="page-content p-5" id="content"> 
+<div class="page-content p-5" id="content">
+  <!-- Toggle button -->
+  <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">Menú</small></button>
 
-  <div class="col-12 border border-info p-3 mt-2">
-
-    <div class="row">   
-        <div class="container">
-            <div class="photo-profile">
-                <%= image_tag (@tweet.user.photo_url), :class => "avatar-in-tweet rounded" %>
-            </div>
-            <div class="index-rt-icontext">
-                <% if @tweet.is_retweet? %>
-                    <%= link_to '<i class="fas fa-retweet text-muted"></i>'.html_safe %>
-                    <%= link_to "Has retwitteado..", @tweet.tweet_ref %>   
-                <% end %>
-            </div>
-            <div class="index-username">
-                <%= @tweet.user.username %>
-            </div>
-            <span><%= link_to '<i class="far fa-calendar-alt fa-sm"></i> '.html_safe+distance_of_time_in_words(Time.now, @tweet.created_at), @tweet %></span>
-            
-            <div class="index-content">
-                <%= @tweet.content %>
-            </div>
-        </div>
-    </div>    
+    <div class="container-fluid"> 
+        <div class="row">
+            <div class="col-12">
     
-    <hr/>
-    
-    <div class="float-right">
-      <span>
-        <%= @tweet.likes.count %>       
-        <%= link_to ('<i class="'+@tweet.like_icon(current_user)+' text-danger fa-sm"></i>').html_safe, tweet_likes_path(@tweet), method: :post %>              
-      </span>   
-      |         
-      <span>
-        <%= @tweet.count_rt %>  
-        <%= link_to ('<i class="fas fa-retweet '+@tweet.retweet_icon+'"></i>').html_safe, tweet_retweet_path(@tweet), method: :post %>                                             
-      </span>    
-    </div>
+                <div class="card rounded mb-3">
+                    <div class="card-body"> 
+                        <div class="container-fluid">  
+                            <div class="row">
+      
+                            <!-- Foto de perfil -->
+                            <div class=" col-3 photo-profile p-3 d-inline">
+                                <%= image_tag (@tweet.user.photo_url), :class => "photo-tweet rounded-circle img-thumbnail" %>
+                                <% if user_signed_in? && current_user != @tweet.user %>
+                                  <%= link_to current_user.is_following?(@tweet.user) ? 
+                                  "Unfollow" : "Follow", 
+                                  users_follow_path(@tweet.user.id), 
+                                  class: "btn-follow",
+                                  method: :post %>
+                            <% end %>
+                            </div>
 
-  </div >
+                            <div class="col-9 d-inline content-text-card">
+                                <!-- Texto RT -->
+                                <div class="rt-text">
+                                    <% if @tweet.is_retweet? %>
+                                        <%= link_to '<i class="fas fa-retweet text-muted"></i>'.html_safe %>
+                                        <%= link_to "Has retwitteado..", @tweet.tweet_ref %>   
+                                    <% end %>
+                                </div>
+
+                                <!-- Nombre, fecha y contenido -->
+                                <div class="index-username">
+                                    <%= @tweet.user.username %>
+                                </div>
+
+                                <span class="index-calendar">
+                                <%= link_to '<i class="far fa-calendar-alt fa-sm"></i> '.html_safe+distance_of_time_in_words(Time.now, @tweet.created_at), @tweet %>
+                                </span>
+                    
+                                <!-- separador interno -->    
+                                <div class="separator3"></div>
+
+                                <div class="index-content">
+                                    <%= @tweet.content.html_safe %>
+                                </div>
+                            </div>    
+
+                            <!-- separador -->    
+                            <div class=" col-12 separator2"></div> 
+        
+                            <!-- Likes y RT -->
+                            <div class=" col-12">
+                                <div class="float-right text-right">
+                                    <span>
+                                        <%= @tweet.likes.count %>       
+                                            <%= link_to ('<i class="'+@tweet.like_icon(current_user) +' text-danger fa-sm"></i>').html_safe, tweet_likes_path(@tweet), method: :post %>              
+                                    </span>   
+                                        |         
+                                    <span>
+                                        <%= @tweet.count_rt %>  
+                                        <%= link_to ('<i class="fas fa-retweet '+@tweet.retweet_icon+'"></i>').html_safe, tweet_retweet_path(@tweet), method: :post %>                                             
+                                    </span>    
+                                </div>
+                            </div> 
+
+                            </div>
+                        </div> 
+                    </div> 
+                </div> 
+            </div>                  
+        </div>        
+    </div>  
+  
 
   <div>
     <% @tweet.liking_users.each do |user|%>
-      <%= image_tag (user.photo_url), :class => "rounded avatar-in-tweet" %>
+      <div class="">
+      <%= image_tag (user.photo_url), :class => "rounded-circle photo-tweet2" %><br>
+      <span class="username-text-like"><%= user.username %></span>
+      </div>
     <% end %>
-  </div>
+  </div><br>
 
-
-  <%= link_to 'Back', root_path %>
+  <%= link_to 'Back', root_path, class: "btn btn-warning text-black ml-4" %>
 
 </div>  

@@ -1,4 +1,4 @@
-<div class="page-content" id="content">
+<!-- Page content holder -->
 
   <%= form_with(model: tweet, local: true) do |form| %>
    <% if tweet.errors.any? %>
@@ -13,7 +13,7 @@
      </div>
    <% end %>
 
-   <div class="card card-style" >
+   <div class="card" >
     <div class="card-body">
         <div class="field card-title">
           <%= form.label :content, "#{current_user.username} dice: " %>
@@ -23,10 +23,12 @@
         </div>
 
         <div class="actions text-right my-2">
-          <%= form.submit "Twittear", :class => "btn btn-info" %>
+          <%= form.submit "Twittear", :class => "btn btn-warning text-black" %>
         </div>
       <% end %>
     </div>
   </div> 
+
+
  
-</div>   
+  
